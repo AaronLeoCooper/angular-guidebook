@@ -1,3 +1,15 @@
-<header>
-  <img src="../../assets/img/logo.svg" class="logo" />
+<header class="container">
+  <a [routerLink]="homeRoute.path">
+    <img src="../../assets/img/logo.svg" class="logo" />
+  </a>
+  <nav class="nav">
+    <a
+      class="navRoute"
+      *ngFor="let navRoute of navRoutes"
+      [routerLink]="navRoute.path"
+      routerLinkActive="active"
+    >
+      {{ navRoute.data.label }}
+    </a>
+  </nav>
 </header>

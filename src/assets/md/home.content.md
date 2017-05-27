@@ -1,4 +1,4 @@
-# Introduction
+# Welcome
 
 Thanks for viewing **Angular Guidebook**!
 
@@ -10,3 +10,5 @@ little time as possible.
 Whilst every effort has been made by it's creator to ensure the information
 contained is up to date, easy to understand and above all _correct_, please
 don't hesitate to reach out if you find any errors or inconsistencies.
+
+Have fun learning the latest version of Angular! :)

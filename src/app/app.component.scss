@@ -1,0 +1,12 @@
+@import '../assets/styles/helpers';
+
+.container {
+  @include flexContainer;
+  min-height: 100vh;
+}
+
+.content {
+  @include flexChild($grow: 1, $shrink: 1);
+  padding: 0 20px;
+  margin-bottom: 60px;
+}

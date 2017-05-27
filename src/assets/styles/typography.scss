@@ -1,0 +1,52 @@
+/**
+ * Global typographic styles
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,700|Tinos');
+@import 'helpers';
+
+html, body {
+  @include bodyFont($size: 18px, $lineHeight: 26px);
+  color: $dark1;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5 {
+  @include block;
+  margin: 0;
+}
+
+h1, .h1 {
+  @include headingFont($size: 30px, $spacing: 2px);
+  margin: 40px 0 50px;
+}
+
+h2, .h2 {
+  @include headingFont($weight: 700, $size: 26px);
+  border-bottom: solid 1px $color3;
+  padding-bottom: 6px;
+  margin: 40px 0 30px;
+}
+
+h3, .h3 {
+  @include headingFont($weight: 700, $size: 22px);
+  border-bottom: solid 1px $color4;
+  padding-bottom: 4px;
+  margin: 30px 0 20px;
+}
+
+p {
+  margin: 20px 0;
+}
+
+a {
+  color: $color3;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($color3, 10%);
+  }
+}

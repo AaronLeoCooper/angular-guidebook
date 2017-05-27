@@ -1,0 +1,52 @@
+/* Reusable SCSS mixins & functions */
+
+@mixin block($position: relative, $display: block) {
+  position: $position;
+  display: $display;
+  box-sizing: border-box;
+}
+
+@mixin inline-block($position: relative) {
+  @include block($position, $display: inline-block);
+}
+
+@mixin font($family: 'Arial', $fallbackFamily: 'sans serif', $weight: normal, $size: false, $lineHeight: false, $spacing: normal) {
+  font-family: $family, $fallbackFamily;
+  font-weight: $weight;
+
+  @if $size != false {
+    font-size: $size;
+  }
+
+  @if $lineHeight != false {
+    line-height: $lineHeight;
+  }
+
+  @if $spacing != false {
+    letter-spacing: $spacing;
+  }
+}
+
+@mixin headingFont($weight: normal, $size: false, $lineHeight: normal, $spacing: 1px) {
+  @include font($family: 'Nunito', $fallbackFamily: 'sans serif', $weight: $weight, $size: $size, $lineHeight: $lineHeight, $spacing: $spacing);
+  text-transform: uppercase;
+}
+
+@mixin bodyFont($weight: normal, $size: false, $lineHeight: false, $spacing: normal) {
+  @include font($family: 'Tinos', $fallbackFamily: 'serif', $weight: $weight, $size: $size, $lineHeight: $lineHeight, $spacing: $spacing);
+}
+
+@mixin flexContainer($direction: column, $wrap: nowrap, $justify: flex-start, $alignContent: stretch, $alignItems: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-content: $alignContent;
+  align-items: $alignItems;
+}
+
+@mixin flexChild($grow: 0, $shrink: 1, $baseSize: auto) {
+  order: 0;
+  flex: $grow $shrink $baseSize;
+  align-self: auto;
+}

@@ -1,0 +1,9 @@
+@import '../../assets/styles/helpers.scss';
+
+.container {
+  @include block;
+  background-color: $color2;
+  color: $light1;
+  text-align: center;
+  padding: 20px 0;
+}
