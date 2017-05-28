@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { HomeComponent } from './home/home.component';
-import { IntroComponent } from './intro/intro.component';
+import { MdPageComponent } from './md-page/md-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { IntroComponent } from './intro/intro.component';
     AppHeaderComponent,
     AppFooterComponent,
     HomeComponent,
-    IntroComponent
+    MdPageComponent
   ],
   imports: [
     BrowserModule,

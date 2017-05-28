@@ -1,10 +1,10 @@
 <header class="container">
-  <a [routerLink]="homeRoute.path">
+  <a class="logoLink" [routerLink]="homeRoute.path">
     <img src="../../assets/img/logo.svg" class="logo" />
   </a>
   <nav class="nav">
     <a
-      class="navRoute"
+      class="navItem"
       *ngFor="let navRoute of navRoutes"
       [routerLink]="navRoute.path"
       routerLinkActive="active"

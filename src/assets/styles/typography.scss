@@ -2,11 +2,12 @@
  * Global typographic styles
  */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:200,700|Tinos');
+// @import url('https://fonts.googleapis.com/css?family=Nunito:200,700|Tinos');
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,700|Antic+Slab');
 @import 'helpers';
 
 html, body {
-  @include bodyFont($size: 18px, $lineHeight: 26px);
+  @include bodyFont($size: 18px, $lineHeight: 30px);
   color: $dark1;
 }
 
@@ -20,22 +21,22 @@ h5, .h5 {
 }
 
 h1, .h1 {
-  @include headingFont($size: 30px, $spacing: 2px);
-  margin: 40px 0 50px;
+  @include headingFont($size: 36px, $spacing: 2px);
+  margin: 80px 0 60px;
 }
 
 h2, .h2 {
-  @include headingFont($weight: 700, $size: 26px);
-  border-bottom: solid 1px $color3;
+  @include headingFont($weight: 700, $size: 26px, $spacing: 1.5px);
+  border-bottom: solid 1px $color1;
   padding-bottom: 6px;
-  margin: 40px 0 30px;
+  margin: 60px 0 40px;
 }
 
 h3, .h3 {
-  @include headingFont($weight: 700, $size: 22px);
-  border-bottom: solid 1px $color4;
+  @include headingFont($weight: 700, $size: 22px, $spacing: 1.5px);
+  border-bottom: solid 1px $color2;
   padding-bottom: 4px;
-  margin: 30px 0 20px;
+  margin: 40px 0 30px;
 }
 
 p {
@@ -43,10 +44,11 @@ p {
 }
 
 a {
-  color: $color3;
+  color: $color1;
   text-decoration: none;
+  font-weight: 700;
 
   &:hover {
-    color: darken($color3, 10%);
+    color: darken($color1, 10%);
   }
 }

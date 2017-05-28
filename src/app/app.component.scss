@@ -8,5 +8,6 @@
 .content {
   @include flexChild($grow: 1, $shrink: 1);
   padding: 0 20px;
-  margin-bottom: 60px;
+  margin: 0 auto 60px;
+  max-width: 800px;
 }

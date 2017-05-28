@@ -6,8 +6,12 @@
   box-sizing: border-box;
 }
 
-@mixin inline-block($position: relative) {
+@mixin inline-block($position: relative, $verticalAlign: false) {
   @include block($position, $display: inline-block);
+
+  @if $verticalAlign != false {
+    vertical-align: $verticalAlign;
+  }
 }
 
 @mixin font($family: 'Arial', $fallbackFamily: 'sans serif', $weight: normal, $size: false, $lineHeight: false, $spacing: normal) {
@@ -33,7 +37,7 @@
 }
 
 @mixin bodyFont($weight: normal, $size: false, $lineHeight: false, $spacing: normal) {
-  @include font($family: 'Tinos', $fallbackFamily: 'serif', $weight: $weight, $size: $size, $lineHeight: $lineHeight, $spacing: $spacing);
+  @include font($family: 'Antic Slab', $fallbackFamily: 'serif', $weight: $weight, $size: $size, $lineHeight: $lineHeight, $spacing: $spacing);
 }
 
 @mixin flexContainer($direction: column, $wrap: nowrap, $justify: flex-start, $alignContent: stretch, $alignItems: stretch) {

@@ -1,5 +1,9 @@
 @import '../../assets/styles/helpers';
 
+$logoWidth: 50px;
+$logoMarginRight: 15px;
+$navItemMargin: 15px;
+
 .container {
   @include block;
   padding: 10px;
@@ -7,20 +11,31 @@
   color: $light1;
 }
 
+.logoLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $logoWidth;
+  padding: 10px;
+}
+
 .logo {
-  @include inline-block;
-  height: 40px;
-  margin-right: 30px;
+  @include block;
+  width: $logoWidth;
+  margin-right: $logoMarginRight;
 }
 
 .nav {
-  @include inline-block;
+  @include block;
+  margin-left: $logoWidth + $logoMarginRight;
 }
 
-.navRoute {
-  @include inline-block;
+.navItem {
+  @include inline-block($verticalAlign: middle);
+  @include headingFont($size: 18px, $spacing: 2px);
   color: $light1;
   border-bottom: solid 1px transparent;
+  padding: 5px $navItemMargin;
 
   &:hover:not(.active) {
     color: darken($light1, 5%);
