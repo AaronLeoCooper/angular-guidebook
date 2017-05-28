@@ -1,4 +1,3 @@
 const mdAssetsPath = '../../assets/md';
-const mdFileSuffix = '.content.md';
 
-export const getMdPath = (pageName: string) => `${mdAssetsPath}/${pageName}${mdFileSuffix}`;
+export const getMdPath = (mdTemplate: string) => `${mdAssetsPath}/${mdTemplate}`;

@@ -42,6 +42,8 @@
 
 @mixin flexContainer($direction: column, $wrap: nowrap, $justify: flex-start, $alignContent: stretch, $alignItems: stretch) {
   display: flex;
+  position: relative;
+  box-sizing: border-box;
   flex-direction: $direction;
   flex-wrap: $wrap;
   justify-content: $justify;
@@ -50,6 +52,8 @@
 }
 
 @mixin flexChild($grow: 0, $shrink: 1, $baseSize: auto) {
+  position: relative;
+  box-sizing: border-box;
   order: 0;
   flex: $grow $shrink $baseSize;
   align-self: auto;

@@ -1,27 +1,60 @@
 import { Route, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
 import { MdPageComponent } from './md-page/md-page.component';
+import { GuideComponent } from './guide/guide.component';
 
-export const AppRoutes: Routes = [
+export const GuideRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'guide/index.md'
+    }
   },
   {
     path: 'getting-started',
     component: MdPageComponent,
     data: {
-      inTopNavigation: true,
+      mdTemplate: 'guide/getting-started.md',
       title: 'Getting Started',
       label: 'Getting Started'
     }
+  },
+  {
+    path: 'angular-cli',
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'guide/angular-cli.md',
+      title: 'Using the Angular CLI',
+      label: 'Angular CLI'
+    }
+  }
+];
+
+export const AppRoutes: Routes = [
+  {
+    path: '',
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'home.md'
+    }
+  },
+  {
+    path: 'guide',
+    component: GuideComponent,
+    data: {
+      inTopNavigation: true,
+      title: 'Guide',
+      label: 'Guide'
+    },
+    children: GuideRoutes
   },
   {
     path: 'about',
     component: MdPageComponent,
     data: {
       inTopNavigation: true,
+      mdTemplate: 'about.md',
       title: 'About',
       label: 'About'
     }
@@ -31,6 +64,7 @@ export const AppRoutes: Routes = [
     component: MdPageComponent,
     data: {
       inTopNavigation: true,
+      mdTemplate: 'faq.md',
       title: 'FAQ',
       label: 'FAQ'
     }

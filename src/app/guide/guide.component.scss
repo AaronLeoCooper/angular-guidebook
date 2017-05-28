@@ -1,0 +1,36 @@
+@import '../../assets/styles/helpers.scss';
+
+$sideNavWidth: 220px;
+$sideNavMargin: 20px;
+
+.sideNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $sideNavWidth;
+  overflow-y: auto;
+  margin-top: 80px;
+  padding-left: 20px;
+}
+
+.sideNavItem {
+  @include block;
+  @include headingFont($size: 18px);
+  width: 100%;
+  padding: 10px 0;
+  color: $color1;
+
+  &:not(:last-child) {
+    border-bottom: dashed 1px $dark2;
+  }
+
+  &.active {
+    color: $color2;
+  }
+}
+
+.content {
+  @include block;
+  margin-left: $sideNavWidth + $sideNavMargin;
+}

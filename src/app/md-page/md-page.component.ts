@@ -16,9 +16,9 @@ export class MdPageComponent implements OnInit {
 
   ngOnInit() {
     const { route } = this;
-    const { path } = route.snapshot.routeConfig;
+    const { mdTemplate } = route.snapshot.data;
 
-    this.mdPath = getMdPath(path);
+    this.mdPath = getMdPath(mdTemplate);
   }
 
 }

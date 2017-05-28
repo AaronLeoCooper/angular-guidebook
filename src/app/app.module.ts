@@ -11,16 +11,16 @@ import { AppRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
-import { HomeComponent } from './home/home.component';
 import { MdPageComponent } from './md-page/md-page.component';
+import { GuideComponent } from './guide/guide.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHeaderComponent,
     AppFooterComponent,
-    HomeComponent,
-    MdPageComponent
+    MdPageComponent,
+    GuideComponent
   ],
   imports: [
     BrowserModule,

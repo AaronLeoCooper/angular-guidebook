@@ -5,9 +5,15 @@
   min-height: 100vh;
 }
 
+.header {
+  z-index: 10;
+}
+
 .content {
   @include flexChild($grow: 1, $shrink: 1);
-  padding: 0 20px;
-  margin: 0 auto 60px;
+  width: 100%;
   max-width: 800px;
+  padding: 0 20px 60px;
+  margin: 0 auto;
+  z-index: 1;
 }
