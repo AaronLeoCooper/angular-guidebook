@@ -69,6 +69,16 @@ export const AppRoutes: Routes = [
       label: 'FAQ'
     }
   },
+    {
+    path: 'comparison',
+    component: MdPageComponent,
+    data: {
+      inTopNavigation: true,
+      mdTemplate: 'angular-comparison.md',
+      title: 'Angular Comparison',
+      label: 'Comparison'
+    }
+  },
   { path: '**', redirectTo: '' }
 ];
 

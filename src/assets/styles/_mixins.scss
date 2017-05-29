@@ -40,13 +40,13 @@
   @include font($family: 'Nunito', $fallbackFamily: 'serif', $weight: $weight, $size: $size, $lineHeight: $lineHeight, $spacing: $spacing);
 }
 
-@mixin flexContainer($direction: column, $wrap: nowrap, $justify: flex-start, $alignContent: stretch, $alignItems: stretch) {
+@mixin flexContainer($direction: column, $wrap: nowrap, $justifyContent: flex-start, $alignContent: stretch, $alignItems: stretch) {
   display: flex;
   position: relative;
   box-sizing: border-box;
   flex-direction: $direction;
   flex-wrap: $wrap;
-  justify-content: $justify;
+  justify-content: $justifyContent;
   align-content: $alignContent;
   align-items: $alignItems;
 }

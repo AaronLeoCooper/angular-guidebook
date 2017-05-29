@@ -3,15 +3,21 @@
 $sideNavWidth: 220px;
 $sideNavMargin: 20px;
 
-.sideNav {
+.sideColumn {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   width: $sideNavWidth;
   overflow-y: auto;
   margin-top: 80px;
   padding-left: 20px;
+}
+
+.sideNav {
+  position: fixed;
+  top: $HEADER_HEIGHT + $H1_TOP_OFFSET;
+  bottom: $FOOTER_HEIGHT;
+  width: $sideNavWidth;
 }
 
 .sideNavItem {

@@ -1,12 +1,17 @@
 @import '../../assets/styles/helpers.scss';
 
 .container {
-  @include block;
+  @include flexContainer($justifyContent: center);
   @include headingFont($size: 14px);
+  height: $FOOTER_HEIGHT;
+  padding: 0 10px;
+  text-align: center;
   background-color: $dark1;
   color: $light1;
-  text-align: center;
-  padding: 20px 0;
+}
+
+.content {
+  @include flexChild;
 }
 
 .link {

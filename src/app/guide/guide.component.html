@@ -1,13 +1,15 @@
-<nav class="sideNav">
-  <a
-    class="sideNavItem"
-    *ngFor="let sideNavRoute of sideNavRoutes"
-    [routerLink]="sideNavRoute.path"
-    routerLinkActive="active"
-  >
-    {{ sideNavRoute.data.label }}
-  </a>
-</nav>
+<aside class="sideColumn">
+  <nav class="sideNav">
+    <a
+      class="sideNavItem"
+      *ngFor="let sideNavRoute of sideNavRoutes"
+      [routerLink]="sideNavRoute.path"
+      routerLinkActive="active"
+    >
+      {{ sideNavRoute.data.label }}
+    </a>
+  </nav>
+</aside>
 <article class="content">
   <router-outlet></router-outlet>
 </article>
