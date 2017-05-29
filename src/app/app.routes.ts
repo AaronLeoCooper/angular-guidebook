@@ -25,8 +25,26 @@ export const GuideRoutes: Routes = [
     component: MdPageComponent,
     data: {
       mdTemplate: 'guide/angular-cli.md',
-      title: 'Using the Angular CLI',
+      title: 'Angular CLI',
       label: 'Angular CLI'
+    }
+  },
+  {
+    path: 'components',
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'guide/components.md',
+      title: 'Components',
+      label: 'Components'
+    }
+  },
+  {
+    path: 'routing',
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'guide/routing.md',
+      title: 'Routing',
+      label: 'Routing'
     }
   }
 ];

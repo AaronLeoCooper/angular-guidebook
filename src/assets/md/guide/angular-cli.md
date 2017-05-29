@@ -38,3 +38,20 @@ Since Angular encourages code modularity and an opinionated app structure, using
 the Angular CLI will help ensure that your app remains consistent as it
 grows. Consistency is important for developing a codebase that stays easy to
 manage and make changes to later, no matter no big it grows.
+
+
+## Angular CLI Config
+
+One of the caveats that some framework management CLI tools come with is that
+they limit the amount of customisation possible to the development or
+build steps. Often this means that the tool needs to have added an "eject"
+feature to allow developers to take over the management of the tooling of
+their project, which is almost always a non-reversible action.
+
+The Angular team have thought about this problem, and in response, they've
+built their CLI tool to accept a configuration file to allow the developer to
+alter some of the features of the tool, extending its usefulness and giving
+less of a reason to need to eject the tool after setting up a project.
+
+The tool does still offer the `ng eject` command if you do decide to remove it
+and maintain the complete set of tooling and configurations yourself, however.
