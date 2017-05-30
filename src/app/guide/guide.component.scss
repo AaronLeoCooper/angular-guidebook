@@ -4,20 +4,30 @@ $sideNavWidth: 220px;
 $sideNavMargin: 20px;
 
 .sideColumn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: $sideNavWidth;
-  overflow-y: auto;
-  margin-top: 80px;
-  padding-left: 20px;
+  @include block;
+  margin-top: 40px;
+  margin-bottom: -20px;
+
+  @include breakpoint(mobile, above) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $sideNavWidth;
+    overflow-y: auto;
+    padding-left: 20px;
+    margin-top: 80px;
+  }
 }
 
 .sideNav {
-  position: fixed;
-  top: $HEADER_HEIGHT + $H1_TOP_OFFSET;
-  bottom: $FOOTER_HEIGHT;
-  width: $sideNavWidth;
+  position: relative;
+
+  @include breakpoint(mobile, above) {
+    position: fixed;
+    top: $HEADER_HEIGHT + $H1_TOP_OFFSET;
+    bottom: $FOOTER_HEIGHT;
+    width: $sideNavWidth;
+  }
 }
 
 .sideNavItem {
@@ -38,5 +48,8 @@ $sideNavMargin: 20px;
 
 .content {
   @include block;
-  margin-left: $sideNavWidth + $sideNavMargin;
+
+  @include breakpoint(mobile, above) {
+    margin-left: $sideNavWidth + $sideNavMargin;
+  }
 }

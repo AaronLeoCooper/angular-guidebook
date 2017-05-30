@@ -1,5 +1,26 @@
 /* Reusable SCSS mixins & functions */
 
+$breakpoints: (
+  mobile : 767px,
+  tablet : 991px,
+  desktop : 1199px
+);
+
+@mixin breakpoint($breakpoint, $type: below) {
+  $width: map-get($breakpoints, $breakpoint);
+
+  @if $type == below {
+    @media (max-width: $width) {
+      @content;
+    }
+  }
+  @else {
+    @media (min-width: $width + 1) {
+      @content;
+    }
+  }
+}
+
 @mixin block($position: relative, $display: block) {
   position: $position;
   display: $display;

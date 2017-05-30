@@ -8,6 +8,8 @@ import { HomeRoute, NavigationRoutes } from '../app.routes';
   styleUrls: ['./app-header.component.scss']
 })
 export class AppHeaderComponent {
+
   homeRoute = HomeRoute;
   navRoutes = NavigationRoutes;
+
 }
