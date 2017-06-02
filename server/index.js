@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const http = require('http');
 const express = require('express');
 const morgan = require('morgan');
 const historyApiFallback = require('express-history-api-fallback');
