@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -14,13 +14,16 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
 import { MdPageComponent } from './md-page/md-page.component';
 import { GuideComponent } from './guide/guide.component';
 
+import { ClickOutsideDirective } from './click-outside.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
     AppHeaderComponent,
     AppFooterComponent,
     MdPageComponent,
-    GuideComponent
+    GuideComponent,
+    ClickOutsideDirective
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { GuideComponent } from './guide/guide.component';
     RouterModule.forRoot(AppRoutes),
     MarkdownToHtmlModule.forRoot()
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

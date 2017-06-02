@@ -2,7 +2,17 @@
   <a class="logoLink" [routerLink]="homeRoute.path">
     <img src="../../assets/img/logo.svg" class="logo" />
   </a>
-  <nav class="nav">
+  <button
+    class="hamburger"
+    (click)="toggleNavOpen()"
+  >
+    <i class="icon light1">menu</i>
+  </button>
+  <nav
+    class="nav"
+    [ngClass]="{ isOpen: navIsOpen }"
+    (appclickOutside)="toggleNavOpen(false)"
+  >
     <a
       class="navItem"
       *ngFor="let navRoute of navRoutes"

@@ -24,11 +24,28 @@ $navItemMargin: 15px;
   @include block;
   width: $logoWidth;
   margin-right: $logoMarginRight;
+  z-index: 20;
 }
 
 .nav {
   @include block;
   margin-left: $logoWidth + $logoMarginRight;
+
+  @include breakpoint(mobile) {
+    display: none;
+    position: absolute;
+    top: $HEADER_HEIGHT;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: $color2;
+    margin-left: 0;
+    padding: 20px;
+
+    &.isOpen {
+      display: block;
+    }
+  }
 }
 
 .navItem {
@@ -44,5 +61,32 @@ $navItemMargin: 15px;
 
   &.active {
     border-bottom-color: $light1;
+  }
+
+  @include breakpoint(mobile) {
+    @include block;
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 24px;
+  }
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+
+  &.active {
+    background-color: rgba($dark1, 0.2);
+  }
+
+  @include breakpoint(mobile, above) {
+    display: none;
   }
 }

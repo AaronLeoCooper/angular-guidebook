@@ -2,7 +2,6 @@
  * Global typographic styles
  */
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:200,700');
 @import 'helpers';
 
 html, body {
@@ -49,5 +48,19 @@ a {
 
   &:hover {
     color: darken($color1, 10%);
+  }
+}
+
+.icon {
+  @include iconFont;
+}
+
+$colors: (light1: $light1, dark1: $dark1, dark2: $dark2,
+          color1: $color1, color2: $color2, color3: $color3,
+          color4: $color4, color5: $color5);
+
+@each $name, $color in $colors {
+  .#{$name} {
+    color: $color;
   }
 }
