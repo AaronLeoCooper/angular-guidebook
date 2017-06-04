@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "bs": "browser-sync start --config \"bs-config.js\"",
     "build": "ng build",
     "build:prod": "ng build -prod",
     "test": "ng test",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "browser-sync": "^2.18.12",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
