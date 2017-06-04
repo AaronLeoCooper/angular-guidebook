@@ -1,9 +1,9 @@
 /* Reusable SCSS mixins & functions */
 
 $breakpoints: (
-  mobile : 767px,
-  tablet : 991px,
-  desktop : 1199px
+  mobile: 767px,
+  tablet: 991px,
+  desktop: 1199px
 );
 
 @mixin breakpoint($breakpoint, $type: below) {
@@ -27,7 +27,7 @@ $breakpoints: (
   box-sizing: border-box;
 }
 
-@mixin inline-block($position: relative, $verticalAlign: false) {
+@mixin inlineBlock($position: relative, $verticalAlign: false) {
   @include block($position, $display: inline-block);
 
   @if $verticalAlign != false {

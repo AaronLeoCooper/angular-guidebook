@@ -1,27 +1,29 @@
 <header class="container">
-  <a class="logoLink" [routerLink]="homeRoute.path">
-    <img src="../../assets/img/logo.svg" class="logo" />
-  </a>
-  <button
-    class="hamburger"
-    [ngClass]="{ active: navIsOpen }"
-    (click)="toggleNavOpen()"
-  >
-    <i class="icon light1">menu</i>
-  </button>
-  <nav
-    class="nav"
-    [ngClass]="{ isOpen: navIsOpen }"
-    (clickOutside)="closeNav()"
-  >
-    <a
-      class="navItem"
-      *ngFor="let navRoute of navRoutes"
-      [routerLink]="navRoute.path"
-      routerLinkActive="active"
-      (click)="closeNav()"
-    >
-      {{ navRoute.data.label }}
+  <div class="content">
+    <a class="logoLink" [routerLink]="homeRoute.path">
+      <img src="../../assets/img/logo.svg" class="logo" />
     </a>
-  </nav>
+    <button
+      class="hamburger"
+      [ngClass]="{ active: navIsOpen }"
+      (click)="toggleNavOpen()"
+    >
+      <i class="icon light1">menu</i>
+    </button>
+    <nav
+      class="nav"
+      [ngClass]="{ isOpen: navIsOpen }"
+      (clickOutside)="closeNav()"
+    >
+      <a
+        class="navItem"
+        *ngFor="let navRoute of navRoutes"
+        [routerLink]="navRoute.path"
+        routerLinkActive="active"
+        (click)="closeNav()"
+      >
+        {{ navRoute.data.label }}
+      </a>
+    </nav>
+  </div>
 </header>

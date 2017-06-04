@@ -4,21 +4,40 @@ $logoWidth: 50px;
 $logoMarginRight: 15px;
 $navItemMargin: 15px;
 
+$itemOrder: (background: 10, nav: 15, logo: 20, hamburger: 0);
+$itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
+
 .container {
   @include block;
-  padding: 10px;
-  background-color: $color1;
-  color: $light1;
   height: $HEADER_HEIGHT;
 }
 
-.background {
-  position: relative;
-  z-index: 20;
+.content {
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $HEADER_HEIGHT;
+  padding: 10px;
+  background-color: $color1;
+  color: $light1;
+  z-index: map-get($itemOrder, background);
+
+  &:before {
+    content: '';
+    @include block($position: absolute);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $color1;
+    z-index: map-get($itemOrderMobile, background);
+  }
 }
 
 .logoLink {
-  position: absolute;
+  @include block($position: absolute);
   top: 0;
   left: 0;
   width: $logoWidth;
@@ -29,24 +48,28 @@ $navItemMargin: 15px;
   @include block;
   width: $logoWidth;
   margin-right: $logoMarginRight;
-  z-index: 25;
+  z-index: map-get($itemOrder, logo);
+
+  @include breakpoint(mobile) {
+    z-index: map-get($itemOrderMobile, logo);
+  }
 }
 
 .nav {
   @include block;
   margin-left: $logoWidth + $logoMarginRight;
+  z-index: map-get($itemOrder, nav);
 
   @include breakpoint(mobile) {
-    display: none;
-    position: fixed;
+    @include block($position: absolute, $display: none);
     top: 0;
     left: 0;
     right: 0;
-    z-index: 5;
     background-color: $color2;
     margin-left: 0;
     padding: 20px;
-    padding-top: $HEADER_HEIGHT;
+    padding-top: $HEADER_HEIGHT + 20px;
+    z-index: map-get($itemOrderMobile, nav);
 
     &.isOpen {
       display: block;
@@ -55,7 +78,7 @@ $navItemMargin: 15px;
 }
 
 .navItem {
-  @include inline-block($verticalAlign: middle);
+  @include inlineBlock($verticalAlign: middle);
   @include headingFont($size: 18px, $spacing: 2px);
   color: $light1;
   border-bottom: solid 1px transparent;
@@ -79,7 +102,7 @@ $navItemMargin: 15px;
 }
 
 .hamburger {
-  position: fixed;
+  @include block($position: absolute);
   top: $HEADER_HEIGHT / 2;
   transform: translateY(-50%);
   right: 8px;
@@ -87,7 +110,7 @@ $navItemMargin: 15px;
   border: none;
   border-radius: 5px;
   background-color: $color1;
-  z-index: 10;
+  z-index: map-get($itemOrderMobile, hamburger);
 
   &.active {
     background-color: darken($color1, 10%);
@@ -95,5 +118,6 @@ $navItemMargin: 15px;
 
   @include breakpoint(mobile, above) {
     display: none;
+    z-index: map-get($itemOrder, hamburger);
   }
 }
