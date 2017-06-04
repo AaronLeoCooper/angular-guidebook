@@ -1,0 +1,25 @@
+/**
+ * Global styles that should be available everywhere, prefixed
+ * with .GLOBAL__ namespace for consistency
+ */
+
+@import './helpers';
+
+.GLOBAL__preLoadingWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.GLOBAL__preLoadingLogo {
+  @include block;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  background-image: url('/assets/img/logo.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: floating 2s ease-in-out infinite;
+}

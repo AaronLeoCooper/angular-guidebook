@@ -1,0 +1,15 @@
+/**
+ * Import-once Keyframes & Animation definitions
+ */
+
+@keyframes floating {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(15%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
