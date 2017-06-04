@@ -61,7 +61,7 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
   z-index: map-get($itemOrder, nav);
 
   @include breakpoint(mobile) {
-    @include block($position: absolute, $display: none);
+    @include block($position: absolute);
     top: 0;
     left: 0;
     right: 0;
@@ -70,10 +70,6 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
     padding: 20px;
     padding-top: $HEADER_HEIGHT + 20px;
     z-index: map-get($itemOrderMobile, nav);
-
-    &.isOpen {
-      display: block;
-    }
   }
 }
 

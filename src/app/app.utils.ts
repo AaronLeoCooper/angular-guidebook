@@ -1,4 +1,12 @@
-import { OnceEveryControl } from './app.d';
+/**
+ * Control object returned from onceEvery function
+ *
+ * @export
+ * @interface OnceEveryControl
+ */
+export interface OnceEveryControl {
+  reset: () => void;
+}
 
 /**
  * Calls the passed callback only if not already been called within
