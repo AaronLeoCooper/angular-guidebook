@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { OnceEveryControl } from '../app.d';
+import { onceEvery } from '../app.utils';
 import { HomeRoute, NavigationRoutes } from '../app.routes';
 
 @Component({
@@ -13,17 +15,22 @@ export class AppHeaderComponent {
   navRoutes = NavigationRoutes;
   navIsOpen = false;
 
-  private toggleIfNeeded (toggle: boolean): void {
-    if (toggle !== this.navIsOpen) {
-      this.navIsOpen = toggle;
-    }
+  public toggleNavOpen: (toggle?: boolean) => OnceEveryControl = onceEvery(
+    (toggle?: boolean) => {
+      this._toggleNavOpen(toggle);
+    },
+    100
+  );
+
+  public closeNav (): void {
+    this.toggleNavOpen(false);
   }
 
-  public toggleNavOpen (toggle?: boolean): void {
+  private _toggleNavOpen (toggle?: boolean): void {
     if (typeof toggle !== 'undefined') {
-      this.toggleIfNeeded(toggle);
+      this.navIsOpen = toggle;
     } else {
-      this.toggleIfNeeded(!this.navIsOpen);
+      this.navIsOpen = !this.navIsOpen;
     }
   }
 
