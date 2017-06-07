@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 export interface Breakpoint {
   min?: number;
@@ -15,7 +16,7 @@ export class BreakpointService {
   private static defaultBreakpoints: BreakpointConfig = {
     mobile: { max: 767 },
     mobileAbove: { min: 768 }
-  }
+  };
 
   private breakpoints: BreakpointConfig;
 
