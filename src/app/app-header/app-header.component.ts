@@ -40,13 +40,9 @@ export class AppHeaderComponent {
   public toggleNavOpen: (toggle?: boolean) => OnceEveryControl = onceEvery(
     (toggle?: boolean) => {
       this._toggleNavOpen(toggle);
-      this._setNavState(toggle);
     },
     100
   );
-
-  constructor () {
-  }
 
   public closeNav (): void {
     this.toggleNavOpen(false);
@@ -58,6 +54,8 @@ export class AppHeaderComponent {
     } else {
       this.navIsOpen = !this.navIsOpen;
     }
+
+    this._setNavState(this.navIsOpen);
   }
 
   private _setNavState (isOpen: boolean): void {
