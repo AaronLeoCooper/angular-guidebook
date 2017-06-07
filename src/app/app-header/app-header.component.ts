@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   trigger,
   state,
@@ -6,10 +6,11 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { Subscription } from 'rxjs/Subscription';
 
-import { BreakpointService } from '../breakpoint.service';
 import { onceEvery, OnceEveryControl } from '../app.utils';
 import { HomeRoute, NavigationRoutes } from '../app.routes';
+import { BreakpointService, WindowDimensions } from '../breakpoint.service';
 
 @Component({
   selector: 'app-header',
@@ -27,15 +28,16 @@ import { HomeRoute, NavigationRoutes } from '../app.routes';
       })),
       transition('closed <=> open', animate('250ms ease'))
     ])
-  ],
-  providers: [BreakpointService]
+  ]
 })
-export class AppHeaderComponent {
+export class AppHeaderComponent implements OnDestroy {
 
-  homeRoute = HomeRoute;
-  navRoutes = NavigationRoutes;
-  navIsOpen = false;
-  navState = 'closed';
+  private homeRoute = HomeRoute;
+  private navRoutes = NavigationRoutes;
+  private breakpointSubscription: Subscription;
+
+  public navIsOpen = false;
+  public navState = 'closed';
 
   public toggleNavOpen: (toggle?: boolean) => OnceEveryControl = onceEvery(
     (toggle?: boolean) => {
@@ -43,6 +45,20 @@ export class AppHeaderComponent {
     },
     100
   );
+
+  constructor (private breakpointService: BreakpointService) {
+
+    this.breakpointSubscription = breakpointService
+      .getSubscription({
+        mobile: { max: 599 },
+        mobileAbove: { min: 600 }
+      });
+
+  }
+
+  ngOnDestroy () {
+    this.breakpointSubscription.unsubscribe();
+  }
 
   public closeNav (): void {
     this.toggleNavOpen(false);
