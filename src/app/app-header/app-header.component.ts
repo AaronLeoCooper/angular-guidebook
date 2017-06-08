@@ -27,6 +27,17 @@ import { BreakpointService, WindowDimensions } from '../breakpoint.service';
         transform: 'translateY(0%)'
       })),
       transition('closed <=> open', animate('250ms ease'))
+    ]),
+    trigger('navDeviceState', [
+      state('mobile', style({
+        display: 'none',
+        opacity: '0'
+      })),
+      state('mobileAbove', style({
+        display: 'block',
+        opacity: '1'
+      })),
+      transition('mobile <=> mobileAbove', animate('150ms'))
     ])
   ]
 })
@@ -38,22 +49,23 @@ export class AppHeaderComponent implements OnDestroy {
 
   public navIsOpen = false;
   public navState = 'closed';
+  public navDeviceState: string;
 
-  public toggleNavOpen: (toggle?: boolean) => OnceEveryControl = onceEvery(
+  private _toggleNavOpen = onceEvery(
     (toggle?: boolean) => {
-      this._toggleNavOpen(toggle);
+      if (typeof toggle !== 'undefined') {
+        this.navIsOpen = toggle;
+      } else {
+        this.navIsOpen = !this.navIsOpen;
+      }
+
+      this._setNavState(this.navIsOpen);
     },
     100
   );
 
   constructor (private breakpointService: BreakpointService) {
-
-    this.breakpointSubscription = breakpointService
-      .getSubscription({
-        mobile: { max: 599 },
-        mobileAbove: { min: 600 }
-      });
-
+    this.breakpointSubscription = breakpointService.subscribe(this.onWindowResize);
   }
 
   ngOnDestroy () {
@@ -61,17 +73,11 @@ export class AppHeaderComponent implements OnDestroy {
   }
 
   public closeNav (): void {
-    this.toggleNavOpen(false);
+    this._toggleNavOpen(false);
   }
 
-  private _toggleNavOpen (toggle?: boolean): void {
-    if (typeof toggle !== 'undefined') {
-      this.navIsOpen = toggle;
-    } else {
-      this.navIsOpen = !this.navIsOpen;
-    }
-
-    this._setNavState(this.navIsOpen);
+  public toggleNavOpen (toggle?: boolean): void {
+    this._toggleNavOpen(toggle);
   }
 
   private _setNavState (isOpen: boolean): void {
@@ -80,6 +86,25 @@ export class AppHeaderComponent implements OnDestroy {
     } else {
       this.navState = 'closed';
     }
+  }
+
+  private onWindowResize = (windowDimensions: WindowDimensions) => {
+    const {
+      width,
+      height
+    } = windowDimensions;
+
+    if (width < 768) {
+      this.toggleNavMobile('mobile');
+    } else {
+      this.toggleNavMobile('mobileAbove');
+    }
+  }
+
+  private toggleNavMobile (deviceState: string): void {
+    this.navDeviceState = deviceState;
+
+    console.info('deviceState', deviceState)
   }
 
 }

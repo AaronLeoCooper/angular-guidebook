@@ -1,3 +1,4 @@
+import { WindowDimensions } from './breakpoint.service';
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,6 +11,8 @@ import 'rxjs/add/operator/map';
 export interface Breakpoint {
   min?: number;
   max?: number;
+  onEnter?: (windowDimensions: WindowDimensions) => any;
+  onLeave?: (windowDimensions: WindowDimensions) => any;
 }
 
 export interface BreakpointConfig {
@@ -27,13 +30,11 @@ export class BreakpointService {
   private resizeObservable: Observable<WindowDimensions>;
 
   constructor () {
-
     this.resizeObservable = Observable
       .fromEvent(window, 'resize')
       .map(this.getWindowSize)
       .debounceTime(300)
       .distinctUntilChanged();
-
   }
 
   private getWindowSize (): WindowDimensions {
@@ -48,10 +49,12 @@ export class BreakpointService {
     };
   }
 
-  public getSubscription (breakpoints: BreakpointConfig): Subscription {
+  public subscribe (onResize: (WindowDimensions) => any): Subscription {
     const $windowDimensions = new BehaviorSubject(this.getWindowSize());
 
-    return this.resizeObservable.subscribe($windowDimensions);
+    // return this.resizeObservable.subscribe($windowDimensions);
+
+    return this.resizeObservable.subscribe(onResize);
   }
 
 }
