@@ -2,7 +2,6 @@ import { WindowDimensions } from './breakpoint.service';
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -50,10 +49,6 @@ export class BreakpointService {
   }
 
   public subscribe (onResize: (WindowDimensions) => any): Subscription {
-    const $windowDimensions = new BehaviorSubject(this.getWindowSize());
-
-    // return this.resizeObservable.subscribe($windowDimensions);
-
     return this.resizeObservable.subscribe(onResize);
   }
 

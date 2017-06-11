@@ -8,9 +8,12 @@ import {
 } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
+import { BREAKPOINTS } from '../app.constants';
 import { onceEvery, OnceEveryControl } from '../app.utils';
 import { HomeRoute, NavigationRoutes } from '../app.routes';
 import { BreakpointService, WindowDimensions } from '../breakpoint.service';
+
+type NavState = 'open' | 'closed' | 'mobileAbove';
 
 @Component({
   selector: 'app-header',
@@ -19,26 +22,17 @@ import { BreakpointService, WindowDimensions } from '../breakpoint.service';
   animations: [
     trigger('navState', [
       state('closed', style({
-        display: 'none',
-        transform: 'translateY(-100%)'
-      })),
-      state('open', style({
-        display: 'block',
         transform: 'translateY(0%)'
       })),
-      transition('closed <=> open', animate('250ms ease'))
-    ]),
-    trigger('navDeviceState', [
-      state('mobile', style({
-        display: 'none',
-        opacity: '0'
+      state('open', style({
+        transform: 'translateY(100%)'
       })),
       state('mobileAbove', style({
-        display: 'block',
-        opacity: '1'
+        transform: 'translateY(0%)'
       })),
-      transition('mobile <=> mobileAbove', animate('150ms'))
-    ])
+      transition('closed <=> open', animate('250ms ease')),
+      transition('* <=> mobileAbove', animate('0 none'))
+    ]),
   ]
 })
 export class AppHeaderComponent implements OnDestroy {
@@ -48,8 +42,7 @@ export class AppHeaderComponent implements OnDestroy {
   private breakpointSubscription: Subscription;
 
   public navIsOpen = false;
-  public navState = 'closed';
-  public navDeviceState: string;
+  public navState: NavState = 'mobileAbove';
 
   private _toggleNavOpen = onceEvery(
     (toggle?: boolean) => {
@@ -59,7 +52,7 @@ export class AppHeaderComponent implements OnDestroy {
         this.navIsOpen = !this.navIsOpen;
       }
 
-      this._setNavState(this.navIsOpen);
+      this._toggleMobileNavState(this.navIsOpen);
     },
     100
   );
@@ -72,15 +65,24 @@ export class AppHeaderComponent implements OnDestroy {
     this.breakpointSubscription.unsubscribe();
   }
 
+  public setNavMobileAbove (): void {
+    this.navIsOpen = false;
+    this.navState = 'mobileAbove';
+  }
+
   public closeNav (): void {
     this._toggleNavOpen(false);
+  }
+
+  public openNav (): void {
+    this._toggleNavOpen(true);
   }
 
   public toggleNavOpen (toggle?: boolean): void {
     this._toggleNavOpen(toggle);
   }
 
-  private _setNavState (isOpen: boolean): void {
+  private _toggleMobileNavState (isOpen: boolean): void {
     if (isOpen) {
       this.navState = 'open';
     } else {
@@ -88,23 +90,25 @@ export class AppHeaderComponent implements OnDestroy {
     }
   }
 
-  private onWindowResize = (windowDimensions: WindowDimensions) => {
+  private onWindowResize = (windowDimensions: WindowDimensions): void => {
     const {
       width,
       height
     } = windowDimensions;
 
-    if (width < 768) {
-      this.toggleNavMobile('mobile');
-    } else {
-      this.toggleNavMobile('mobileAbove');
+    const wasMobileAbove = this.navState === 'mobileAbove';
+    const isNowMobile = width <= BREAKPOINTS.MOBILE_MAX;
+
+    const wasMobile = !wasMobileAbove;
+    const isNowMobileAbove = !isNowMobile;
+
+    if (wasMobileAbove && isNowMobile) {
+      this.closeNav();
     }
-  }
 
-  private toggleNavMobile (deviceState: string): void {
-    this.navDeviceState = deviceState;
-
-    console.info('deviceState', deviceState)
+    if (wasMobile && isNowMobileAbove) {
+      this.setNavMobileAbove();
+    }
   }
 
 }

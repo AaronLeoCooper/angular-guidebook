@@ -1,6 +1,6 @@
 {
   "name": "angular-guidebook",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
