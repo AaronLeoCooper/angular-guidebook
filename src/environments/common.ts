@@ -1,3 +1,5 @@
+import { projectVersion } from './env.version';
+
 export const common = {
-  projectVersion: '1.0.0-alpha'
+  projectVersion
 };
