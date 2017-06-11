@@ -22,7 +22,7 @@ fs.writeFileSync(versionEnvFilePath, getVersionExport(projectVersion), function 
   console.info(chalk.green(`Wrote v${projectVersion} to ${versionEnvFilePath}!\n`));
 });
 
-function getVersionExport (versionNum: string) {
+function getVersionExport (versionNum) {
   return `// Provides the current project version as a constant
 export const projectVersion = 'v${versionNum}';
 `;
