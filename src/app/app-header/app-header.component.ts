@@ -37,10 +37,10 @@ type NavState = 'open' | 'closed' | 'mobileAbove';
 })
 export class AppHeaderComponent implements OnDestroy {
 
-  private homeRoute = HomeRoute;
-  private navRoutes = NavigationRoutes;
   private breakpointSubscription: Subscription;
 
+  public homeRoute = HomeRoute;
+  public navRoutes = NavigationRoutes;
   public navIsOpen = false;
   public navState: NavState = 'mobileAbove';
 
