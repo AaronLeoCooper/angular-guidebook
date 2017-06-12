@@ -12,7 +12,7 @@ const versionEnvFilePath = path.join(__dirname, 'src/environments/env.version.ts
 
 console.info(`Writing v${projectVersion} to app environments...\n`);
 
-fs.writeFileSync(versionEnvFilePath, getVersionExport(projectVersion), function (writeFileErr) {
+fs.writeFileSync(versionEnvFilePath, getVersionExport(projectVersion), 'utf8', function (writeFileErr) {
   if (writeFileErr) {
     console.error(chalk.red(`Error writing to ${versionEnvFilePath}!`));
 
