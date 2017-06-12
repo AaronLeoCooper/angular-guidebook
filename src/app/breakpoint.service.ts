@@ -36,7 +36,7 @@ export class BreakpointService {
       .distinctUntilChanged();
   }
 
-  private getWindowSize (): WindowDimensions {
+  public getWindowSize (): WindowDimensions {
     const {
       innerWidth,
       innerHeight

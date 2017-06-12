@@ -58,6 +58,11 @@ export class AppHeaderComponent implements OnDestroy {
   );
 
   constructor (private breakpointService: BreakpointService) {
+    const initialWindowDimensions = breakpointService.getWindowSize();
+    this.onWindowResize(initialWindowDimensions);
+
+    console.info(this.navState)
+
     this.breakpointSubscription = breakpointService.subscribe(this.onWindowResize);
   }
 
