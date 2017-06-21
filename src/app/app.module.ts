@@ -8,8 +8,10 @@ import { RouterModule } from '@angular/router';
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 
 import { AppRoutes } from './app.routes';
-import { ClickOutsideDirective } from './click-outside.directive';
+import { AppTitleService } from './app-title.service';
 import { BreakpointService } from './breakpoint.service';
+
+import { ClickOutsideDirective } from './click-outside.directive';
 
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
@@ -35,7 +37,7 @@ import { GuideComponent } from './guide/guide.component';
     MarkdownToHtmlModule.forRoot()
   ],
   providers: [
-    Title,
+    AppTitleService,
     BreakpointService
   ],
   bootstrap: [

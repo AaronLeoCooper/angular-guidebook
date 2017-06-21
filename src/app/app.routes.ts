@@ -46,6 +46,24 @@ export const GuideRoutes: Routes = [
       title: 'Routing',
       label: 'Routing'
     }
+  },
+  {
+    path: 'services',
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'coming-soon.md',
+      title: 'Services',
+      label: 'Services'
+    }
+  },
+  {
+    path: 'animations',
+    component: MdPageComponent,
+    data: {
+      mdTemplate: 'coming-soon.md',
+      title: 'Animations',
+      label: 'Animations'
+    }
   }
 ];
 
@@ -87,7 +105,7 @@ export const AppRoutes: Routes = [
       label: 'FAQ'
     }
   },
-    {
+  {
     path: 'comparison',
     component: MdPageComponent,
     data: {
@@ -100,6 +118,6 @@ export const AppRoutes: Routes = [
   { path: '**', redirectTo: '' }
 ];
 
-export const HomeRoute: Route = AppRoutes.find(route => route.path === '');
+export const HomeRoute: Route = AppRoutes.find(({ path }) => path === '');
 
-export const NavigationRoutes: Routes = AppRoutes.filter(route => !!route.data && route.data.inTopNavigation);
+export const NavigationRoutes: Routes = AppRoutes.filter(({ data }) => data && data.inTopNavigation);

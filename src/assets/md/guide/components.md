@@ -161,4 +161,4 @@ class, it prepares it to be ready to integrate into another components template,
 or as a component rendered via Angular Router.
 
 >NOTE: When importing a decorator, you _dont_ put the @ symbol before the
->variable - only add the @ when you actually use the decorator
+>variable name in the import - only add the @ when you actually use the decorator
