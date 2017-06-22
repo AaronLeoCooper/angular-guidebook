@@ -4,20 +4,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
 import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
 
-import { AppRoutes } from './app.routes';
-import { AppTitleService } from './app-title.service';
-import { BreakpointService } from './breakpoint.service';
+import { AppRouterModule } from './app-router.module';
 
-import { ClickOutsideDirective } from './click-outside.directive';
+import { AppTitleService } from './services/app-title.service';
+import { BreakpointService } from './services/breakpoint.service';
+
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 import { AppComponent } from './app.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
-import { AppFooterComponent } from './app-footer/app-footer.component';
-import { MdPageComponent } from './md-page/md-page.component';
-import { GuideComponent } from './guide/guide.component';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { MdPageComponent } from './components/md-page/md-page.component';
+import { GuideComponent } from './components/guide/guide.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { GuideComponent } from './guide/guide.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(AppRoutes),
+    AppRouterModule,
     MarkdownToHtmlModule.forRoot()
   ],
   providers: [

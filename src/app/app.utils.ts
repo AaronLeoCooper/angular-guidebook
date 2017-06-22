@@ -8,6 +8,9 @@ export interface OnceEveryControl {
   reset: () => void;
 }
 
+type CallbackParams = any[];
+type OnceEveryCallback = (...CallbackParams) => any;
+
 /**
  * Calls the passed callback only if not already been called within
  * the given delay timeout
@@ -17,7 +20,10 @@ export interface OnceEveryControl {
  * @param {number} delay
  * @returns {() => OnceEveryControl}
  */
-export function onceEvery(callback: (...callbackParams: any[]) => any, delay: number): (...callbackParams: any[]) => OnceEveryControl {
+export function onceEvery(
+  callback: OnceEveryCallback,
+  delay: number
+): (...callbackParams: any[]) => OnceEveryControl {
   let wasCalled = false;
 
   const reset = (): void => {

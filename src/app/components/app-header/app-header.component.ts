@@ -8,10 +8,10 @@ import {
 } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
-import { BREAKPOINTS } from '../app.constants';
-import { onceEvery, OnceEveryControl } from '../app.utils';
-import { HomeRoute, NavigationRoutes } from '../app.routes';
-import { BreakpointService, WindowDimensions } from '../breakpoint.service';
+import { BREAKPOINTS } from '../../app.constants';
+import { onceEvery, OnceEveryControl } from '../../app.utils';
+import { HomeRoute, NavigationRoutes } from '../../app-router.routes';
+import { BreakpointService, WindowDimensions } from '../../services/breakpoint.service';
 
 type NavState = 'open' | 'closed' | 'mobileAbove';
 
@@ -60,8 +60,6 @@ export class AppHeaderComponent implements OnDestroy {
   constructor (private breakpointService: BreakpointService) {
     const initialWindowDimensions = breakpointService.getWindowSize();
     this.onWindowResize(initialWindowDimensions);
-
-    console.info(this.navState)
 
     this.breakpointSubscription = breakpointService.subscribe(this.onWindowResize);
   }

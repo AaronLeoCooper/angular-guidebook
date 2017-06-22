@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { AppTitleService } from './../../services/app-title.service';
+
 import { getMdPath } from './md-page.helpers';
 
 @Component({
@@ -12,7 +14,9 @@ export class MdPageComponent implements OnInit {
 
   mdPath: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private titleService: AppTitleService) {
+    titleService.setPageTitle(route.snapshot.data.title);
+  }
 
   ngOnInit() {
     const { route } = this;

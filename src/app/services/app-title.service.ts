@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 export interface TitleConfig {
   rootTitle?: string;
   separator?: string;
+  rootIsFirst?: boolean;
 }
 
 @Injectable()
@@ -12,7 +13,8 @@ export class AppTitleService {
   private pageTitle = '';
   private titleConfig: TitleConfig = {
     rootTitle: '',
-    separator: '|'
+    separator: '|',
+    rootIsFirst: false
   };
 
   constructor(private titleService: Title) { }
@@ -28,27 +30,36 @@ export class AppTitleService {
   public getFullTitle (): string {
     const {
       rootTitle,
-      separator
+      separator,
+      rootIsFirst
     } = this.titleConfig;
 
-    return this.pageTitle
-      ? `${rootTitle} ${separator} ${this.pageTitle}`
-      : rootTitle;
+    if (this.pageTitle) {
+      return rootIsFirst
+        ? `${rootTitle} ${separator} ${this.pageTitle}`
+        : `${this.pageTitle} ${separator} ${rootTitle}`;
+    }
+
+    return rootTitle;
   }
 
-  public setConfig (newConfig: TitleConfig): void {
+  public setConfig (newConfig: TitleConfig): AppTitleService {
     this.titleConfig = {
       ...this.titleConfig,
       ...newConfig
     };
 
     this.dispatchSetTitle();
+
+    return this;
   }
 
-  public setPageTitle (pageTitle: string): void {
+  public setPageTitle (pageTitle: string): AppTitleService {
     this.pageTitle = pageTitle;
 
     this.dispatchSetTitle();
+
+    return this;
   }
 
   private dispatchSetTitle(): void {

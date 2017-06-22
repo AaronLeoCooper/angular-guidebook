@@ -1,4 +1,4 @@
-@import '../../assets/styles/helpers.scss';
+@import '../../../assets/styles/helpers.scss';
 
 .container {
   @include flexContainer($justifyContent: center);

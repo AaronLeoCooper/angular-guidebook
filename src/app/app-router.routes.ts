@@ -1,7 +1,7 @@
 import { Route, Routes } from '@angular/router';
 
-import { MdPageComponent } from './md-page/md-page.component';
-import { GuideComponent } from './guide/guide.component';
+import { MdPageComponent } from './components/md-page/md-page.component';
+import { GuideComponent } from './components/guide/guide.component';
 
 export const GuideRoutes: Routes = [
   {
