@@ -25,3 +25,12 @@ Angular, here's the links to their respective official documentations:
 
 - [Angular (latest)](http://angular.io)
 - [AngularJS (previous framework)](http://angularjs.org)
+
+
+## What type of projects can Angular be used for?
+
+In essence, any type of web app can be built with Angular, in the same way
+that ReactJS, VueJS, EmberJS and most other popular web frameworks make a
+suitable approach.
+
+However, Angular's strengths are in building big apps.

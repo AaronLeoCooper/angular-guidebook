@@ -10,6 +10,10 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
 .container {
   @include block;
   height: $HEADER_HEIGHT;
+
+  @include breakpoint(mobile) {
+    height: $HEADER_HEIGHT_MOBILE;
+  }
 }
 
 .content {
@@ -24,15 +28,8 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
   color: $light1;
   z-index: map-get($itemOrder, background);
 
-  &:before {
-    content: '';
-    @include block($position: absolute);
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: $color1;
-    z-index: map-get($itemOrderMobile, background);
+  @include breakpoint(mobile) {
+    background-color: transparent;
   }
 }
 
@@ -52,6 +49,7 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
 
   @include breakpoint(mobile) {
     z-index: map-get($itemOrderMobile, logo);
+    width: 40px;
   }
 }
 
@@ -62,7 +60,7 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
 
   @include breakpoint(mobile) {
     @include block($position: absolute);
-    bottom: 0;
+    bottom: 100%;
     left: 0;
     right: 0;
     background-color: $color2;
@@ -106,6 +104,8 @@ $itemOrderMobile: (nav: 10, background: 15, logo: 20, hamburger: 20);
   border-radius: 5px;
   background-color: $color1;
   z-index: map-get($itemOrderMobile, hamburger);
+  width: 42px;
+  text-align: center;
 
   &.active {
     background-color: darken($color1, 10%);

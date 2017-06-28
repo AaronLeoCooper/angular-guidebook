@@ -17,6 +17,10 @@ $sideNavMargin: 30px;
     padding-left: 20px;
     margin-top: 80px;
   }
+
+  @include breakpoint(mobile) {
+    margin-top: 0;
+  }
 }
 
 .sideNav {
@@ -27,6 +31,10 @@ $sideNavMargin: 30px;
     top: $HEADER_HEIGHT + $H1_TOP_OFFSET;
     bottom: $FOOTER_HEIGHT;
     width: $sideNavWidth;
+  }
+
+  @include breakpoint(mobile) {
+    padding: 0 50px;
   }
 }
 
