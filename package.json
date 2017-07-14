@@ -1,6 +1,9 @@
 {
   "name": "angular-guidebook",
   "version": "1.0.0-alpha.5",
+  "engines": {
+    "node": "8.1.4"
+  },
   "license": "MIT",
   "scripts": {
     "ng": "ng",
