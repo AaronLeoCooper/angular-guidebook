@@ -14,8 +14,20 @@
   @include flexChild;
 }
 
-.link {
+.linkA {
   color: $color5;
+
+  &:hover {
+    color: darken($color5, 5%);
+  }
+}
+
+.linkB {
+  color: $color2;
+
+  &:hover {
+    color: darken($color2, 5%);
+  }
 }
 
 .version {
