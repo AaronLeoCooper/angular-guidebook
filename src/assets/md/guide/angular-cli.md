@@ -40,18 +40,58 @@ grows. Consistency is important for developing a codebase that stays easy to
 manage and make changes to later, no matter no big it grows.
 
 
+## SCSS/SASS support
+
+The Angular CLI makes it easy to start a new project with SCSS or SASS support
+right from the get-go. Just add `--style=scss` or `--style=sass` to the end of
+the new project command, e.g.:
+
+```bash
+ng new project --style=scss
+```
+
+### Adding SCSS/SASS to an existing project
+
+Firstly, install `node-sass`:
+
+```bash
+npm install node-sass --save-dev
+```
+
+Then update the project's local CLI config:
+
+```bash
+ng set defaults.styleExt scss
+```
+
+And that's it! Just be aware you'll need to update any existing component CSS
+file extensions to `.scss` or `.sass` as required, as well as the references to
+those stylesheet file names inside component declarations.
+
+You'll also need to manually update the `.angular-cli.json` global style imports
+to refer to the relevant extension (`.scss` or `.sass`):
+
+```json
+"styles": [
+  "styles.css"
+]
+```
+
+
 ## Angular CLI Config
 
 One of the caveats that some framework management CLI tools come with is that
 they limit the amount of customisation possible to the development or
-build steps. Often this means that the tool needs to have added an "eject"
-feature to allow developers to take over the management of the tooling of
-their project, which is almost always a non-reversible action.
+build steps.
 
 The Angular team have thought about this problem, and in response, they've
 built their CLI tool to accept a configuration file to allow the developer to
 alter some of the features of the tool, extending its usefulness and giving
 less of a reason to need to eject the tool after setting up a project.
 
-The tool does still offer the `ng eject` command if you do decide to remove it
-and maintain the complete set of tooling and configurations yourself, however.
+
+## Gain full configuration control
+
+As a last resort, the tool does still offer the `ng eject` command if you do
+decide to remove it and maintain the complete set of raw configurations
+yourself, however.
