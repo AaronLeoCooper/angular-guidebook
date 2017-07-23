@@ -1,0 +1,13 @@
+{
+  "name": "Angular Guidebook",
+  "short_name": "Angular Guidebook",
+  "lang": "en-GB",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#dd0031",
+  "icons": [
+    {
+      "src": "/assets/img/logo.png"
+    }
+  ]
+}

@@ -14,7 +14,8 @@
     "e2e": "ng e2e",
     "serve": "node server/index.js",
     "deploy": "npm run build:prod && npm run serve",
-    "heroku:local": "heroku local web"
+    "heroku:local": "heroku local web",
+    "clean": "rm -rf ./dist"
   },
   "private": true,
   "dependencies": {

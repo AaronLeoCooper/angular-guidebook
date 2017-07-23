@@ -2,5 +2,6 @@ import { common } from './common';
 
 export const environment = {
   ...common,
-  production: true
+  production: true,
+  ENV: 'prod'
 };
