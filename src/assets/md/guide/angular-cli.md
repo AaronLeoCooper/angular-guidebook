@@ -78,20 +78,13 @@ to refer to the relevant extension (`.scss` or `.sass`):
 ```
 
 
-## Angular CLI Config
+## Full configuration control
 
-One of the caveats that some framework management CLI tools come with is that
-they limit the amount of customisation possible to the development or
-build steps.
+The Angular team have thought about the limitations that using a CLI imposes,
+and in response, they've built their CLI tool to accept a configuration file
+to allow the developer to alter some of the features of the tool, extending
+its usefulness in real-world projects.
 
-The Angular team have thought about this problem, and in response, they've
-built their CLI tool to accept a configuration file to allow the developer to
-alter some of the features of the tool, extending its usefulness and giving
-less of a reason to need to eject the tool after setting up a project.
-
-
-## Gain full configuration control
-
-As a last resort, the tool does still offer the `ng eject` command if you do
-decide to remove it and maintain the complete set of raw configurations
-yourself, however.
+As a last resort however, the tool does still offer the `ng eject` command if you
+do decide to remove it and maintain the complete set of raw configuration
+yourself.

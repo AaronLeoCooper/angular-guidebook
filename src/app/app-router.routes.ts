@@ -5,13 +5,6 @@ import { GuideComponent } from './components/guide/guide.component';
 
 export const GuideRoutes: Routes = [
   {
-    path: '',
-    component: MdPageComponent,
-    data: {
-      mdTemplate: 'guide/index.md'
-    }
-  },
-  {
     path: 'getting-started',
     component: MdPageComponent,
     data: {
@@ -64,6 +57,10 @@ export const GuideRoutes: Routes = [
       title: 'Animations',
       label: 'Animations'
     }
+  },
+  {
+    path: '**',
+    redirectTo: 'getting-started'
   }
 ];
 
@@ -118,6 +115,8 @@ export const AppRoutes: Routes = [
   { path: '**', redirectTo: '' }
 ];
 
-export const HomeRoute: Route = AppRoutes.find(({ path }) => path === '');
+export const HomeRoute: Route = AppRoutes
+  .find(({ path }) => path === '');
 
-export const NavigationRoutes: Routes = AppRoutes.filter(({ data }) => data && data.inTopNavigation);
+export const NavigationRoutes: Routes = AppRoutes
+  .filter(({ data }) => data && data.inTopNavigation);

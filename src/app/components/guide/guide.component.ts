@@ -10,6 +10,7 @@ import { GuideRoutes } from '../../app-router.routes';
 })
 export class GuideComponent {
 
-  sideNavRoutes = GuideRoutes.filter(route => route.path !== '');
+  sideNavRoutes = GuideRoutes
+    .filter(({ path }) => !['', '**'].includes(path));
 
 }

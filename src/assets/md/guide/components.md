@@ -118,9 +118,10 @@ export class HeaderComponent implements OnInit {
 }
 ```
 
-If you've not used ES7 or TypeScript **decorators** before, chances are you'll
-find something a bit odd in this file, and you'll have seen something
-similar inside `app.module.ts` earlier too:
+If you've not used ES7 or
+[TypeScript decorators](https://www.typescriptlang.org/docs/handbook/decorators.html)
+before, chances are you'll find something a bit odd in this file, and you'll
+have seen something similar inside `app.module.ts` earlier too:
 
 ```typescript
 @Component({
@@ -130,7 +131,7 @@ similar inside `app.module.ts` earlier too:
 })
 ```
 
-You can probably work out for yourself that this is some sort of definition
+You can probably work out for yourself that this is a definition
 for your component, detailing how it's selected in the HTML output and where
 its template file and CSS files are located in relation to this file.
 
@@ -149,16 +150,17 @@ export class HeaderComponent {}
 
 This is signifying that the class `HeaderComponent` needs to have some special
 properties. You don't need to worry too much about the inner workings of
-decorators for now however, just try to understand that they _decorate_
-classes with additional functionality that they wouldn't have otherwise. If
-you want to read more, the
+decorators for now however, just take a moment to understand that they _decorate_
+(_add to_) classes with additional functionality that they wouldn't have otherwise.
+If you want to read more, the
 [official TypeScript docs](https://www.typescriptlang.org/docs/handbook/decorators.html)
-do a great job of breaking down how decorators actually work.
+do a great job of breaking down how class and function decorators actually work.
 
 `Component` comes from the `@angular/core` package because this is the standard
 component definition decorator for Angular. By using this decorator before a
-class, it prepares it to be ready to integrate into another components template,
-or as a component rendered via Angular Router.
+class, it prepares it for integration into another component's template,
+or as a component rendered by Angular Router.
 
 >NOTE: When importing a decorator, you _dont_ put the @ symbol before the
->variable name in the import - only add the @ when you actually use the decorator
+>variable name in the import. Only add the @ when you actually apply the decorator
+>to a class

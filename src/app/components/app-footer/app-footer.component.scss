@@ -8,13 +8,29 @@
   text-align: center;
   background-color: $dark1;
   color: $light1;
+
+  @include breakpoint(mobile) {
+    height: $FOOTER_HEIGHT_MOBILE;
+  }
 }
 
 .content {
   @include flexChild;
 }
 
-.linkA {
+.section {
+  margin: 12px 0;
+}
+
+.linkMain {
+  color: $light1;
+
+  &:hover {
+    color: darken($light1, 10%);
+  }
+}
+
+.linkSub {
   color: $color5;
 
   &:hover {
@@ -22,14 +38,36 @@
   }
 }
 
-.linkB {
-  color: $color2;
+.sizeSm {
+  font-size: 12px;
+}
 
-  &:hover {
-    color: darken($color2, 5%);
-  }
+.sizeMd {
+  font-size: 16px;
 }
 
 .version {
   font-size: 10px
+}
+
+.github {
+  @include inlineBlock();
+  padding: 5px;
+}
+
+.githubText,
+.githubImg {
+  @include inlineBlock();
+  vertical-align: middle;
+}
+
+.githubImg {
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+
+  @include breakpoint(mobile) {
+    display: block;
+    margin: 4px auto;
+  }
 }
